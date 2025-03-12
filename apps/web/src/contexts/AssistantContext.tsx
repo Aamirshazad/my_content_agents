@@ -415,7 +415,9 @@ export function AssistantProvider({ children }: { children: ReactNode }) {
     createCustomAssistant,
     editCustomAssistant,
     setSelectedAssistant,
-    handleQuickStart: (type: "text") => void,
+    handleQuickStart: () => {
+      // Implement quick start functionality here
+    }
   };
 
   return (

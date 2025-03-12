@@ -271,7 +271,9 @@ export function ThreadProvider({ children }: { children: ReactNode }) {
     setThreadId,
     setModelName,
     setModelConfig,
-    handleQuickStart: (type: "text") => void,
+    handleQuickStart: () => {
+      // Implement quick start functionality here
+    }
   };
 
   return (
