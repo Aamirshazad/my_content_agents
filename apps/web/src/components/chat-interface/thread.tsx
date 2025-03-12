@@ -33,14 +33,11 @@ const ThreadScrollToBottom: FC = () => {
 };
 
 export interface ThreadProps {
-  userId: string | undefined;
-  hasChatStarted: boolean;
-  handleQuickStart: (
-    type: "text" | "code",
-    language?: ProgrammingLanguageOptions
-  ) => void;
-  setChatStarted: Dispatch<SetStateAction<boolean>>;
+  userId?: string;
   switchSelectedThreadCallback: (thread: ThreadType) => void;
+  setChatStarted: React.Dispatch<React.SetStateAction<boolean>>;
+  handleQuickStart: (type: "text") => void;
+  hasChatStarted: boolean;
   searchEnabled: boolean;
   setChatCollapsed: (c: boolean) => void;
 }

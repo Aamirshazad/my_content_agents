@@ -8,13 +8,14 @@ import {
   useState,
 } from "react";
 
-type UserContentType = {
+interface UserContextType {
   getUser: () => Promise<User | undefined>;
   user: User | undefined;
   loading: boolean;
-};
+  handleQuickStart: (type: "text") => void;
+}
 
-const UserContext = createContext<UserContentType | undefined>(undefined);
+const UserContext = createContext<UserContextType | undefined>(undefined);
 
 export function UserProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User>();
@@ -42,10 +43,13 @@ export function UserProvider({ children }: { children: ReactNode }) {
     return supabaseUser || undefined;
   }
 
-  const contextValue: UserContentType = {
+  const contextValue: UserContextType = {
     getUser,
     user,
     loading,
+    handleQuickStart: (type: "text") => {
+      // Implement the handleQuickStart function here
+    },
   };
 
   return (

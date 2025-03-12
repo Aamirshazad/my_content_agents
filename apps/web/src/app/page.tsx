@@ -7,6 +7,11 @@ import { ThreadProvider } from "@/contexts/ThreadProvider";
 import { UserProvider } from "@/contexts/UserContext";
 import { Suspense } from "react";
 
+const handleQuickStart = (type: "text") => {
+  setChatStarted(true);
+  setSelectedThread(undefined);
+};
+
 export default function Home() {
   return (
     <Suspense>

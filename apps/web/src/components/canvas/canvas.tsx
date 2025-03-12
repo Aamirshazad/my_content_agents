@@ -54,47 +54,9 @@ export function CanvasComponent() {
     }
   }, [chatCollapsedSearchParam]);
 
-  const handleQuickStart = (
-    type: "text" | "code",
-    language?: ProgrammingLanguageOptions
-  ) => {
-    if (type === "code" && !language) {
-      toast({
-        title: "Language not selected",
-        description: "Please select a language to continue",
-        duration: 5000,
-      });
-      return;
-    }
+  const handleQuickStart = (type: "text") => {
     setChatStarted(true);
-
-    let artifactContent: ArtifactCodeV3 | ArtifactMarkdownV3;
-    if (type === "code" && language) {
-      artifactContent = {
-        index: 1,
-        type: "code",
-        title: `Quick start ${type}`,
-        code: getLanguageTemplate(language),
-        language,
-      };
-    } else {
-      artifactContent = {
-        index: 1,
-        type: "text",
-        title: `Quick start ${type}`,
-        fullMarkdown: "",
-      };
-    }
-
-    const newArtifact: ArtifactV3 = {
-      currentIndex: 1,
-      contents: [artifactContent],
-    };
-    // Do not worry about existing items in state. This should
-    // never occur since this action can only be invoked if
-    // there are no messages/artifacts in the thread.
-    setArtifact(newArtifact);
-    setIsEditing(true);
+    setSelectedThread(undefined);
   };
 
   return (
@@ -123,9 +85,9 @@ export function CanvasComponent() {
 
                 if (thread?.metadata?.modelConfig) {
                   setModelConfig(
-                    (thread?.metadata?.customModelName ??
+                    (thread?.metadata?.customModelName ?? 
                       DEFAULT_MODEL_NAME) as ALL_MODEL_NAMES,
-                    (thread.metadata?.modelConfig ??
+                    (thread.metadata?.modelConfig ?? 
                       DEFAULT_MODEL_CONFIG) as CustomModelConfig
                   );
                 } else {
@@ -175,9 +137,9 @@ export function CanvasComponent() {
 
                   if (thread?.metadata?.modelConfig) {
                     setModelConfig(
-                      (thread?.metadata.customModelName ??
+                      (thread?.metadata.customModelName ?? 
                         DEFAULT_MODEL_NAME) as ALL_MODEL_NAMES,
-                      (thread.metadata.modelConfig ??
+                      (thread.metadata.modelConfig ?? 
                         DEFAULT_MODEL_CONFIG) as CustomModelConfig
                     );
                   } else {

@@ -42,10 +42,7 @@ function getRandomPrompts(prompts: string[], count: number = 4): string[] {
 }
 
 interface QuickStartButtonsProps {
-  handleQuickStart: (
-    type: "text" | "code",
-    language?: ProgrammingLanguageOptions
-  ) => void;
+  handleQuickStart: (type: "text") => void;
   composer: React.ReactNode;
   searchEnabled: boolean;
 }
@@ -93,24 +90,19 @@ const QuickStartPrompts = ({ searchEnabled }: QuickStartPromptsProps) => {
 };
 
 const QuickStartButtons = (props: QuickStartButtonsProps) => {
-  const handleLanguageSubmit = (language: ProgrammingLanguageOptions) => {
-    props.handleQuickStart("code", language);
-  };
-
   return (
     <div className="flex flex-col gap-8 items-center justify-center w-full">
       <div className="flex flex-col gap-6">
         <p className="text-gray-600 text-sm">Start with a blank canvas</p>
-        <div className="flex flex-row gap-1 items-center justify-center w-full">
+        <div className="flex flex-row items-center justify-center w-full">
           <Button
             variant="outline"
             className="text-gray-500 hover:text-gray-700 transition-colors ease-in rounded-2xl flex items-center justify-center gap-2 w-[250px] h-[64px]"
             onClick={() => props.handleQuickStart("text")}
           >
-            New Markdown
+            New document
             <NotebookPen />
           </Button>
-          <ProgrammingLanguagesDropdown handleSubmit={handleLanguageSubmit} />
         </div>
       </div>
       <div className="flex flex-col gap-6 mt-2 w-full">
@@ -123,10 +115,7 @@ const QuickStartButtons = (props: QuickStartButtonsProps) => {
 };
 
 interface ThreadWelcomeProps {
-  handleQuickStart: (
-    type: "text" | "code",
-    language?: ProgrammingLanguageOptions
-  ) => void;
+  handleQuickStart: (type: "text") => void;
   composer: React.ReactNode;
   searchEnabled: boolean;
 }

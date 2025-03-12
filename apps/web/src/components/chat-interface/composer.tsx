@@ -61,7 +61,7 @@ const CircleStopIcon = () => {
 
 interface ComposerProps {
   chatStarted: boolean;
-  userId: string | undefined;
+  userId?: string;
   searchEnabled: boolean;
 }
 

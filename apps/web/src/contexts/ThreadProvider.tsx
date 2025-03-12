@@ -30,6 +30,7 @@ type ThreadContentType = {
     modelName: ALL_MODEL_NAMES,
     config: CustomModelConfig
   ) => void;
+  handleQuickStart: (type: "text") => void;
 };
 
 const ThreadContext = createContext<ThreadContentType | undefined>(undefined);
@@ -121,7 +122,7 @@ export function ThreadProvider({ children }: { children: ReactNode }) {
                 "",
               azureOpenAIApiDeploymentName:
                 config.azureConfig?.azureOpenAIApiDeploymentName ||
-                process.env._AZURE_OPENAI_API_DEPLOYMENT_NAME ||
+                process.env._AZURE_OPENAIA_API_DEPLOYMENT_NAME ||
                 "",
               azureOpenAIApiVersion:
                 config.azureConfig?.azureOpenAIApiVersion ||
@@ -270,6 +271,7 @@ export function ThreadProvider({ children }: { children: ReactNode }) {
     setThreadId,
     setModelName,
     setModelConfig,
+    handleQuickStart: (type: "text") => void,
   };
 
   return (

@@ -11,8 +11,9 @@ import { useGraphContext } from "@/contexts/GraphContext";
 import { useAssistantContext } from "@/contexts/AssistantContext";
 
 interface ComposerActionsPopOutProps {
-  userId: string | undefined;
+  userId?: string;
   chatStarted: boolean;
+  handleQuickStart?: (type: "text") => void;
 }
 
 export function ComposerActionsPopOut(props: ComposerActionsPopOutProps) {

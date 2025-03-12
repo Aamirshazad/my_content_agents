@@ -30,6 +30,7 @@ type AssistantContentType = {
     args: EditCustomAssistantArgs
   ) => Promise<Assistant | undefined>;
   setSelectedAssistant: Dispatch<SetStateAction<Assistant | undefined>>;
+  handleQuickStart: (type: "text") => void;
 };
 
 export type AssistantTool = {
@@ -414,6 +415,7 @@ export function AssistantProvider({ children }: { children: ReactNode }) {
     createCustomAssistant,
     editCustomAssistant,
     setSelectedAssistant,
+    handleQuickStart: (type: "text") => void,
   };
 
   return (
